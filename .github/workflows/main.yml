@@ -16,15 +16,15 @@ jobs:
         run: npm run build
       - name: SHOW AWS CLI VERSION
         env:
-          AWS_ACCESS_KEY_ID: ${{ env.secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ env.secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ AWS.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ AWS.AWS_SECRET_KEY }}
           AWS_EC2_METADATA_DISABLED: true
         run: |
           aws --version
       - name: Sync Bucket
         env:
-          AWS_ACCESS_KEY_ID: ${{ env.secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ env.secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ AWS.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ AWS.AWS_SECRET_KEY }}
           AWS_EC2_METADATA_DISABLED: true
         run: |
           aws s3 sync \
